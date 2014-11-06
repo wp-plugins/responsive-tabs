@@ -48,6 +48,12 @@ Go to [the plugin's page](http://wpdarko.com/darko-tools/responsive-tabs/) for i
 = Where can I get help with this plugin? =
 Find help in [our forums](http://wpdarko.com/forums/forum/plugins/responsive-tabs/) for this plugin (we’ll answer you fast, promise).
 
+== Screenshots ==
+1. Displaying the tabs (front view)
+2. Displaying the tabs 2 (front view)
+3. Creating tabs (admin view)
+4. Finding the shortcode (admin view)
+
 == Changelog ==
 
 = 1.0 =
