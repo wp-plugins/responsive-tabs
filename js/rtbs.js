@@ -1,5 +1,6 @@
 $j=jQuery.noConflict();
 $j(document).ready(function (){
+
     
     rtbs_breakpoint = $j('.rtbs_breakpoint').html();
     rtbs_bg_color = $j('.rtbs_bg_color').html();
@@ -10,7 +11,7 @@ $j(document).ready(function (){
     };
     
     var rtbs_def_colors = {
-        backgroundColor : 'white',
+        backgroundColor : 'transparent',
     };
         
     $j('.rtbs').each(function(){

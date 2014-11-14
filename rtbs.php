@@ -2,18 +2,34 @@
 /**
  * Plugin Name: Responsive Tabs
  * Plugin URI: http://wpdarko.com/darko-tools/responsive-pricing-table/
- * Description: A responsive, simple and clean way to display your content. Create new tabs in no-time (custom type) and copy-paste the shortcode into any post/page. Find support and information on the <a href="http://wpdarko.com/darko-tools/responsive-tabs/">plugin's page</a>. This free version is NOT limited and does not contain any ad.
- * Version: 1.0
+ * Description: A responsive, simple and clean way to display your content. Create new tabs in no-time (custom type) and copy-paste the shortcode into any post/page. Find support and information on the <a href="http://wpdarko.com/darko-tools/responsive-tabs/">plugin's page</a>. This free version is NOT limited and does not contain any ad. Check out the <a href='http://wpdarko.com/darko-tools/responsive-tabs-pro/'>PRO version</a> for more great features.
+ * Version: 1.1
  * Author: WP Darko
  * Author URI: http://wpdarko.com
  * License: GPL2
  */
 
+function free_pro_check() {
+    if (is_plugin_active('responsive-tabs-pro/rtbs_pro.php')) {
+        
+        function my_admin_notice(){
+        echo '<div class="updated">
+                <p><strong>PRO</strong> version is activated.</p>
+              </div>';
+        }
+        add_action('admin_notices', 'my_admin_notice');
+        
+        deactivate_plugins(__FILE__);
+    }
+}
+
+add_action( 'admin_init', 'free_pro_check' );
+
 /* adds stylesheet and script */
 add_action( 'wp_enqueue_scripts', 'add_rtbs_scripts' );
 function add_rtbs_scripts() {
-	wp_enqueue_style( 'rtbs', plugins_url('css/rtbs_custom_style.css', __FILE__));
-    wp_enqueue_script( 'rtbs', plugins_url('js/rtbs.js', __FILE__), array( 'jquery' ));
+	wp_enqueue_style( 'rtbs', plugins_url('css/rtbs_custom_style.min.css', __FILE__));
+    wp_enqueue_script( 'rtbs', plugins_url('js/rtbs.min.js', __FILE__), array( 'jquery' ));
 }
 
 add_action( 'init', 'create_rtbs_tabs_type' );
@@ -87,9 +103,11 @@ function rtbs_metaboxes( array $meta_boxes ) {
     );
     return $meta_boxes;
 }
-add_filter( 'dkrtbs_meta_boxes', 'rtbs_metaboxes' );
+add_filter( 'drkfr_meta_boxes', 'rtbs_metaboxes' );
 
-require_once( 'dkrtbs/dkrtbs-meta-boxes.php' );
+if (!class_exists('drkfr_Meta_Box')) {
+    require_once( 'drkfr/custom-meta-boxes.php' );
+}
 
 //shortcode columns
 add_action( 'manage_rtbs_tabs_posts_custom_column' , 'dkrtbs_custom_columns', 10, 2 );

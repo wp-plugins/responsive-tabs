@@ -14,6 +14,9 @@ This plugin adds a “Tabs” section to the admin panel which allows you to cre
 = Rate and review =
 We love to hear from our users, please take the time to rate this plugin and tell us what you think about it!
 
+= Free vs PRO version? =
+The free version of the Responsive Tabs plugin is **not limited** and does not contain any ad. The [PRO version](http://wpdarko.com/darko-tools/responsive-tabs-pro/) gives you access to new features such as new styling settings and **icons** (from font-awesome).
+
 = Author =
 [WP Darko](http://wpdarko.com/) is one more great place to find exclusive WordPress themes & plugins.
 
@@ -48,6 +51,9 @@ Go to [the plugin's page](http://wpdarko.com/darko-tools/responsive-tabs/) for i
 = Where can I get help with this plugin? =
 Find help in [our forums](http://wpdarko.com/forums/forum/plugins/responsive-tabs/) for this plugin (we’ll answer you fast, promise).
 
+= Free vs PRO version? =
+The free version of the Responsive Tabs plugin is **not limited** and does not contain any ad. The [PRO version](http://wpdarko.com/darko-tools/responsive-tabs-pro/) gives you access to new features such as new styling settings and **icons** (from font-awesome).
+
 == Screenshots ==
 1. Displaying the tabs (front view)
 2. Displaying the tabs 2 (front view)
@@ -55,6 +61,11 @@ Find help in [our forums](http://wpdarko.com/forums/forum/plugins/responsive-tab
 4. Finding the shortcode (admin view)
 
 == Changelog ==
+= 1.1 =
+* SAFE UPDATE: No data loss for those upgrading from version 1.0
+* Minor CSS bug fixes
+* Prevent conflicts between plugins 
+* Allows automatic recovery of all tabs when switching to PRO version
 
 = 1.0 =
 * Responsive tabs custom type/shortcode

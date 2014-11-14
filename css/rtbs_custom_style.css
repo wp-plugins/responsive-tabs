@@ -6,10 +6,10 @@
   padding: 0;
   margin: 0;
 }
+
 .rtbs .rtbs_menu li {
   display: inline-block;
   padding:0px;
-  background: white;
   margin-left:0px;
 }
 
@@ -40,6 +40,8 @@
 .rtbs > .active {
   display: block;
 }
+
+.rtbs .rtbs_menu ul li {margin:0;}
 
 .rtbs_full .rtbs_menu ul {  
     display:block;
@@ -90,8 +92,6 @@
     font-weight:300;
     color:white;
 }
-
-
 
 .rtbs_full > .rtbs_content { 
   padding: 19px 30px 14px;
