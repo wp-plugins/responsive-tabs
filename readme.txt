@@ -36,7 +36,7 @@ Find help in [our forums](http://wpdarko.com/forums/forum/plugins/responsive-tab
 
 = Installation =
 1. In your WordPress admin panel, go to Plugins > New Plugin
-2. Find our Responsive Pricing Table plugin by WP Darko and click Install now
+2. Find our Responsive Tabs plugin by WP Darko and click Install now
 3. Alternatively, download the plugin and upload the contents of responsive-tabs.zip to your plugins directory, which usually is /wp-content/plugins/
 4. Activate the plugin
 
