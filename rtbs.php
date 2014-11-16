@@ -3,13 +3,13 @@
  * Plugin Name: Responsive Tabs
  * Plugin URI: http://wpdarko.com/darko-tools/responsive-pricing-table/
  * Description: A responsive, simple and clean way to display your content. Create new tabs in no-time (custom type) and copy-paste the shortcode into any post/page. Find support and information on the <a href="http://wpdarko.com/darko-tools/responsive-tabs/">plugin's page</a>. This free version is NOT limited and does not contain any ad. Check out the <a href='http://wpdarko.com/darko-tools/responsive-tabs-pro/'>PRO version</a> for more great features.
- * Version: 1.1
+ * Version: 1.1.1
  * Author: WP Darko
  * Author URI: http://wpdarko.com
  * License: GPL2
  */
 
-function free_pro_check() {
+function rtbs_free_pro_check() {
     if (is_plugin_active('responsive-tabs-pro/rtbs_pro.php')) {
         
         function my_admin_notice(){
@@ -23,7 +23,7 @@ function free_pro_check() {
     }
 }
 
-add_action( 'admin_init', 'free_pro_check' );
+add_action( 'admin_init', 'rtbs_free_pro_check' );
 
 /* adds stylesheet and script */
 add_action( 'wp_enqueue_scripts', 'add_rtbs_scripts' );
@@ -101,6 +101,25 @@ function rtbs_metaboxes( array $meta_boxes ) {
             )
         )
     );
+    
+    function rtbs_pro_side_meta() {
+        return "<p style='font-size:14px; color:#333; font-style:normal;'>This free version is <strong>NOT</strong> limited and does <strong>not</strong> contain any ad. Check out the <a href='http://wpdarko.com/darko-tools/responsive-tabs-pro/'><span style='color:#61d1aa !important;'>PRO version</span></a> for more great features.</p>";
+    }
+    
+     $meta_boxes[] = array(
+        'title' => 'Responsive Tabs PRO',
+        'pages' => 'rtbs_tabs',
+        'context' => 'side',
+        'priority' => 'low',
+        'fields' => array(
+            array(
+                'id' => 'rtbs_pro_head',
+                'type' => 'group',
+                'desc' => rtbs_pro_side_meta(),
+            )
+        )
+    );
+    
     return $meta_boxes;
 }
 add_filter( 'drkfr_meta_boxes', 'rtbs_metaboxes' );
