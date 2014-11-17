@@ -42,6 +42,8 @@
 }
 
 .rtbs .rtbs_menu ul li {margin:0;}
+.entry-content .rtbs .rtbs_menu ul li {margin:0;}
+.entry-content .rtbs .rtbs_menu ul li a {border:none !important;}
 
 .rtbs_full .rtbs_menu ul {  
     display:block;
