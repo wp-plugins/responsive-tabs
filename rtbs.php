@@ -28,7 +28,7 @@ add_action( 'admin_init', 'rtbs_free_pro_check' );
 /* adds stylesheet and script */
 add_action( 'wp_enqueue_scripts', 'add_rtbs_scripts' );
 function add_rtbs_scripts() {
-	wp_enqueue_style( 'rtbs', plugins_url('css/rtbs_custom_style.css', __FILE__));
+	wp_enqueue_style( 'rtbs', plugins_url('css/rtbs_custom_style.min.css', __FILE__));
     wp_enqueue_script( 'rtbs', plugins_url('js/rtbs.min.js', __FILE__), array( 'jquery' ));
 }
 
