@@ -61,6 +61,10 @@ The free version of the Responsive Tabs plugin is **not limited** and does not c
 4. Finding the shortcode (admin view)
 
 == Changelog ==
+= 1.2 =
+* SAFE UPDATE: No data loss for those upgrading from version 1.0 or higher
+* Fixed background problem when add images to the tabs
+
 = 1.1.2 =
 * SAFE UPDATE: No data loss for those upgrading from version 1.0 or higher
 * Quick fixes
