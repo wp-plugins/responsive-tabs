@@ -1,5 +1,5 @@
 === Responsive Tabs ===
-Tags: tabs, accordeon, responsive, tab, flexible, shortcode, easy
+Tags: easy, flexible, content, tabs, shortcode, responsive, tab, responsive tab, tabbed content, accordion, flexible, simple
 Requires at least: 3.6
 Tested up to: 4.0
 Stable tag: trunk
