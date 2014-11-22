@@ -9,7 +9,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 A responsive and clean way to display your content. Create new tabs in no-time (custom type) and copy-paste the shortcode into any post/page.
 
 == Description ==
-[View demo & instructions](http://wpdarko.com/darko-tools/responsive-tabs/) —
+[View demo & instructions](http://wpdarko.com/darko-tools/responsive-tabs/)
 
 This plugin adds a “Tabs” section to the admin panel which allows you to create tabbed content for your website the easy way. You can quickly add your content to your different tabs, choose a color, a breakpoint, re-order them at anytime and display them anywhere with a simple shortcode. What you see is what you get, and it’s totally free.
 
