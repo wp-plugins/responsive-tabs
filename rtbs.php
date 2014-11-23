@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: Responsive Tabs
- * Plugin URI: http://wpdarko.com/darko-tools/responsive-pricing-table/
- * Description: A responsive, simple and clean way to display your content. Create new tabs in no-time (custom type) and copy-paste the shortcode into any post/page. Find support and information on the <a href="http://wpdarko.com/darko-tools/responsive-tabs/">plugin's page</a>. This free version is NOT limited and does not contain any ad. Check out the <a href='http://wpdarko.com/darko-tools/responsive-tabs-pro/'>PRO version</a> for more great features.
+ * Plugin URI: http://wpdarko.com/responsive-pricing-table/
+ * Description: A responsive, simple and clean way to display your content. Create new tabs in no-time (custom type) and copy-paste the shortcode into any post/page. Find support and information on the <a href="http://wpdarko.com/responsive-tabs/">plugin's page</a>. This free version is NOT limited and does not contain any ad. Check out the <a href='http://wpdarko.com/responsive-tabs-pro/'>PRO version</a> for more great features.
  * Version: 1.2
  * Author: WP Darko
  * Author URI: http://wpdarko.com
@@ -103,7 +103,7 @@ function rtbs_metaboxes( array $meta_boxes ) {
     );
     
     function rtbs_pro_side_meta() {
-        return "<p style='font-size:14px; color:#333; font-style:normal;'>This free version is <strong>NOT</strong> limited and does <strong>not</strong> contain any ad. Check out the <a href='http://wpdarko.com/darko-tools/responsive-tabs-pro/'><span style='color:#61d1aa !important;'>PRO version</span></a> for more great features.</p>";
+        return "<p style='font-size:14px; color:#333; font-style:normal;'>This free version is <strong>NOT</strong> limited and does <strong>not</strong> contain any ad. Check out the <a href='http://wpdarko.com/responsive-tabs-pro/'><span style='color:#61d1aa !important;'>PRO version</span></a> for more great features.</p>";
     }
     
      $meta_boxes[] = array(
