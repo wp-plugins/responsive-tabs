@@ -32,7 +32,7 @@ The free version of the Responsive Tabs plugin is **not limited** and does not c
 Go to [the plugin's page](http://wpdarko.com/darko-tools/responsive-tabs/) if you need more information on how to use this plugin.
 
 = Support =
-Find help in [our forums](http://wpdarko.com/forums/forum/plugins/responsive-tabs/) for this plugin (we’ll answer you fast, promise).
+Find help in [our forums](http://wpdarko.com/forum/plugins/responsive-tabs/) for this plugin (we’ll answer you fast, promise).
 
 == Installation ==
 
@@ -51,7 +51,7 @@ Go to [the plugin's page](http://wpdarko.com/darko-tools/responsive-tabs/) for i
 Go to [the plugin's page](http://wpdarko.com/darko-tools/responsive-tabs/) for information on how to use this plugin.
 
 = Where can I get help with this plugin? =
-Find help in [our forums](http://wpdarko.com/forums/forum/plugins/responsive-tabs/) for this plugin (we’ll answer you fast, promise).
+Find help in [our forums](http://wpdarko.com/forum/plugins/responsive-tabs/) for this plugin (we’ll answer you fast, promise).
 
 = Free vs PRO version? =
 The free version of the Responsive Tabs plugin is **not limited** and does not contain any ad. The [PRO version](http://wpdarko.com/darko-tools/responsive-tabs-pro/) gives you access to new features such as new styling settings and **icons** (from font-awesome).
