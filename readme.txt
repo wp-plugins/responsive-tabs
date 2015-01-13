@@ -63,6 +63,10 @@ The free version of the Responsive Tabs plugin is **not limited** and does not c
 4. Finding the shortcode (admin view)
 
 == Changelog ==
+= 1.2.2 =
+* SAFE UPDATE: No data loss for those upgrading from version 1.0 or higher
+* Admin panel small bug fix
+
 = 1.2.1 =
 * SAFE UPDATE: No data loss for those upgrading from version 1.0 or higher
 * Minor bug fix
