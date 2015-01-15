@@ -3,7 +3,7 @@
  * Plugin Name: Responsive Tabs
  * Plugin URI: http://wpdarko.com/responsive-pricing-table/
  * Description: A responsive, simple and clean way to display your content. Create new tabs in no-time (custom type) and copy-paste the shortcode into any post/page. Find support and information on the <a href="http://wpdarko.com/responsive-tabs/">plugin's page</a>. This free version is NOT limited and does not contain any ad. Check out the <a href='http://wpdarko.com/responsive-tabs-pro/'>PRO version</a> for more great features.
- * Version: 1.2.2
+ * Version: 1.3
  * Author: WP Darko
  * Author URI: http://wpdarko.com
  * License: GPL2
@@ -26,7 +26,7 @@ function rtbs_free_pro_check() {
 add_action( 'admin_init', 'rtbs_free_pro_check' );
 
 /* adds stylesheet and script */
-add_action( 'wp_enqueue_scripts', 'add_rtbs_scripts' );
+add_action( 'wp_enqueue_scripts', 'add_rtbs_scripts', 99 );
 function add_rtbs_scripts() {
 	wp_enqueue_style( 'rtbs', plugins_url('css/rtbs_custom_style.min.css', __FILE__));
     wp_enqueue_script( 'rtbs', plugins_url('js/rtbs.min.js', __FILE__), array( 'jquery' ));
@@ -44,6 +44,15 @@ function create_rtbs_tabs_type() {
       'public' => true,
       'has_archive'  => false,
       'hierarchical' => false,
+         'capabilities' => array(
+    'edit_post'          => 'update_core',
+    'read_post'          => 'update_core',
+    'delete_post'        => 'update_core',
+    'edit_posts'         => 'update_core',
+    'edit_others_posts'  => 'update_core',
+    'publish_posts'      => 'update_core',
+    'read_private_posts' => 'update_core'
+),
       'supports'     => array( 'title' ),
       'menu_icon'    => 'dashicons-plus',
     )
@@ -158,10 +167,10 @@ function rtbs_sc($atts) {
 		"name" => ''
 	), $atts));
 	
-    query_posts( array( 'post_type' => 'rtbs_tabs', 'name' => $name, ) );
-    if ( have_posts() ) : while ( have_posts() ) : the_post();
-
     global $post;
+    $args = array('post_type' => 'rtbs_tabs', 'name' => $name);
+    $custom_posts = get_posts($args);
+    foreach($custom_posts as $post) : setup_postdata($post);
     
 	$entries = get_post_meta( get_the_id(), 'rtbs_tabs_head', false );
     $options = get_post_meta( get_the_id(), 'rtbs_settings_head', false );
@@ -216,7 +225,7 @@ function rtbs_sc($atts) {
     ';
 
 
-  endwhile; endif; wp_reset_query(); 
+  endforeach; wp_reset_query(); 
 	
   return $output;
 
