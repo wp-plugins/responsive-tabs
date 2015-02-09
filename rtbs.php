@@ -193,7 +193,7 @@ function rtbs_sc($atts) {
                 foreach ($entries as $key => $tabs) {
                     if ($key == 0){
                     $output .= '<li class="current">';
-                    $output .= '<a style="background:'.$rtbs_bg_color.'" class="active" href="#'.$name.'-tab-'.$key.'">';
+                    $output .= '<a style="background:'.$rtbs_bg_color.'" class="active '.$name.'-tab-link-'.$key.'" href="#'.$name.'-tab-'.$key.'">';
                     $output .= $tabs['rtbs_title'];
                     $output .= '</a>';
                     $output .= '</li>';
