@@ -3,7 +3,7 @@
  * Plugin Name: Responsive Tabs
  * Plugin URI: http://wpdarko.com/responsive-pricing-table/
  * Description: A responsive, simple and clean way to display your content. Create new tabs in no-time (custom type) and copy-paste the shortcode into any post/page. Find support and information on the <a href="http://wpdarko.com/responsive-tabs/">plugin's page</a>. This free version is NOT limited and does not contain any ad. Check out the <a href='http://wpdarko.com/responsive-tabs-pro/'>PRO version</a> for more great features.
- * Version: 1.3
+ * Version: 1.3.1
  * Author: WP Darko
  * Author URI: http://wpdarko.com
  * License: GPL2
@@ -199,7 +199,7 @@ function rtbs_sc($atts) {
                     $output .= '</li>';
                     } else {
                     $output .= '<li>';
-                    $output .= '<a href="#'.$name.'-tab-'.$key.'">';
+                    $output .= '<a href="#'.$name.'-tab-'.$key.'" class="'.$name.'-tab-link-'.$key.'">';
                     $output .= $tabs['rtbs_title'];
                     $output .= '</a>';
                     $output .= '</li>';

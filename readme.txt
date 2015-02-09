@@ -67,6 +67,10 @@ The [PRO version](http://wpdarko.com/responsive-tabs-pro/) gives you access to n
 4. Finding the shortcode (admin view)
 
 == Changelog ==
+= 1.3.1 =
+* SAFE UPDATE: No data loss for those upgrading from version 1.0 or higher
+* Added a unique class to tab’s links for customization
+
 = 1.3 =
 * SAFE UPDATE: No data loss for those upgrading from version 1.0 or higher
 * You can now add shortcodes inside the tabs (nested)
