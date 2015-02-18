@@ -1,21 +1,12 @@
 $j=jQuery.noConflict();
 $j(document).ready(function (){
-
-    
-    rtbs_breakpoint = $j('.rtbs_breakpoint').html();
-    rtbs_bg_color = $j('.rtbs_bg_color').html();
-    rtbs_light_color = rtbs_bg_color;
-    
-    var rtbs_colors = {
-        backgroundColor : rtbs_bg_color,
-    };
     
     var rtbs_def_colors = {
         backgroundColor : 'transparent',
     };
         
     $j('.rtbs').each(function(){
-        var color = $j(this).find('.rtbs_bg_color').html();
+        var color = $j(this).find('.rtbs_color').html();
         var breakpoint = $j(this).find('.rtbs_breakpoint').html();
         var rtbssize = $j(this).width();
         if (rtbssize > breakpoint) {
@@ -57,7 +48,7 @@ $j(document).ready(function (){
     $j(window).resize(function() {
         $j('.rtbs').each(function(){
             var breakpoint = $j(this).find('.rtbs_breakpoint').html();
-            var color = $j(this).find('.rtbs_bg_color').html();
+            var color = $j(this).find('.rtbs_color').html();
             var rtbssize = $j(this).width();
             if (rtbssize > breakpoint) {
                 $j(this).removeClass('rtbs_full');
@@ -77,7 +68,7 @@ $j(document).ready(function (){
     });
         
     $j(".mobile_toggle").click(function(){ 
-        var color = $j(this).closest('.rtbs').find('.rtbs_bg_color').html();
+        var color = $j(this).closest('.rtbs').find('.rtbs_color').html();
         $j(this).parent().children('li').not(".rtbs_menu li.mobile_toggle").slideToggle(90);
         $j(this).siblings('.current').css( "display", "none" );
         $j(this).css( 'background', color );
@@ -86,7 +77,7 @@ $j(document).ready(function (){
     });
         
     $j(".rtbs_menu li > a").click(function(){
-        var color = $j(this).closest('.rtbs').find('.rtbs_bg_color').html();
+        var color = $j(this).closest('.rtbs').find('.rtbs_color').html();
         var breakpoint = $j(this).closest('.rtbs').find('.rtbs_breakpoint').html();
         var rtbssize = $j(this).closest('.rtbs').width();
         if (rtbssize > breakpoint) {

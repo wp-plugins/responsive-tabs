@@ -67,6 +67,15 @@ The [PRO version](http://wpdarko.com/responsive-tabs-pro/) gives you access to n
 4. Finding the shortcode (admin view)
 
 == Changelog ==
+= 2.0 =
+* WARNING: FOR THOSE WHO UPGRADE FROM AN EARLIER VERSION TO THIS VERSION, YOU MIGHT EXPERIENCE STYLING CHANGES (NO DATA LOSS)! 
+* Major styling bug fixes (spacing, fonts)
+* Better adapts to your theme
+* Bigger content field when editing your tabs (UX)
+* Fixed 1 PHP errors
+* The “Tabs” admin tab is now called “Tab sets” to avoid confusion (tab sets contain tabs)
+* Much cleaner code
+
 = 1.3.1 =
 * SAFE UPDATE: No data loss for those upgrading from version 1.0 or higher
 * Added a unique class to tab’s links for customization
