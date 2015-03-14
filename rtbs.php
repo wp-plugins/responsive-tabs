@@ -1,12 +1,12 @@
 <?php
 /**
- * Plugin Name: Responsive Tabs
- * Plugin URI: http://wpdarko.com/support/documentation/get-started-responsive-tabs/
- * Description: A responsive, simple and clean way to display your content. Create new tabs in no-time (custom type) and copy-paste the shortcode into any post/page. Find support and information on the <a href="http://wpdarko.com/responsive-tabs/">plugin's page</a>. This free version is NOT limited and does not contain any ad. Check out the <a href='http://wpdarko.com/items/responsive-tabs-pro/'>PRO version</a> for more great features.
- * Version: 2.0
- * Author: WP Darko
- * Author URI: http://wpdarko.com
- * License: GPL2
+Plugin Name: Responsive Tabs
+Plugin URI: http://wpdarko.com/support/documentation/get-started-responsive-tabs/
+Description: A responsive, simple and clean way to display your content. Create new tabs in no-time (custom type) and copy-paste the shortcode into any post/page. Find support and information on the <a href="http://wpdarko.com/responsive-tabs/">plugin's page</a>. This free version is NOT limited and does not contain any ad. Check out the <a href='http://wpdarko.com/items/responsive-tabs-pro/'>PRO version</a> for more great features.
+Version: 2.0
+Author: WP Darko
+Author URI: http://wpdarko.com
+License: GPL2
  */
 
 /* Check for the PRO version */
