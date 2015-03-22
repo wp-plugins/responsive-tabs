@@ -1,5 +1,5 @@
 === Responsive Tabs ===
-Tags: easy, flexible, content, tabs, shortcode, responsive, tab, responsive tab, tabbed content, accordion, flexible, simple
+Tags: tab, tabs, accordion, shortcode, easy, flexible, content, responsive, responsive tab, tabbed content, flexible, simple
 Requires at least: 3.6
 Tested up to: 4.1.1
 Stable tag: trunk
@@ -65,6 +65,14 @@ The [PRO version](http://wpdarko.com/items/responsive-tabs-pro/) gives you acces
 4. Finding the shortcode (admin view)
 
 == Changelog ==
+= 3.0 =
+* SAFE UPDATE: No data loss for those upgrading from version 2.0 or higher
+* New admin interface (new framework)
+* You can now force the plugin's original fonts (user request)
+* Added docs and support forums links
+* Added instructions
+* Much cleaner code
+
 = 2.0 =
 * WARNING: FOR THOSE WHO UPGRADE FROM AN EARLIER VERSION TO THIS VERSION, YOU MIGHT EXPERIENCE STYLING CHANGES (NO DATA LOSS)! 
 * Major styling bug fixes (spacing, fonts)
