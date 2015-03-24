@@ -71,7 +71,7 @@ The [PRO version](http://wpdarko.com/items/responsive-tabs-pro/) gives you acces
 * You can now force the plugin's original fonts (user request)
 * Added docs and support forums links
 * Added instructions
-* Much cleaner code
+* Cleaner code
 
 = 2.0 =
 * WARNING: FOR THOSE WHO UPGRADE FROM AN EARLIER VERSION TO THIS VERSION, YOU MIGHT EXPERIENCE STYLING CHANGES (NO DATA LOSS)! 
