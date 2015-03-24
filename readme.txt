@@ -65,6 +65,10 @@ The [PRO version](http://wpdarko.com/items/responsive-tabs-pro/) gives you acces
 4. Finding the shortcode (admin view)
 
 == Changelog ==
+= 3.0.1 =
+* SAFE UPDATE: No data loss for those upgrading from version 2.0 or higher
+* Fixed bug when updating from 2.0 to 3.0
+
 = 3.0 =
 * SAFE UPDATE: No data loss for those upgrading from version 2.0 or higher
 * New admin interface (new framework)
