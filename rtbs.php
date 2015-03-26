@@ -3,15 +3,65 @@
 Plugin Name: Responsive Tabs
 Plugin URI: http://wpdarko.com/support/documentation/get-started-responsive-tabs/
 Description: A responsive, simple and clean way to display your content. Create new tabs in no-time (custom type) and copy-paste the shortcode into any post/page. Find support and information on the <a href="http://wpdarko.com/responsive-tabs/">plugin's page</a>. This free version is NOT limited and does not contain any ad. Check out the <a href='http://wpdarko.com/items/responsive-tabs-pro/'>PRO version</a> for more great features.
-Version: 3.0.1
+Version: 3.0.2
 Author: WP Darko
 Author URI: http://wpdarko.com
 License: GPL2
  */
 
-require_once(ABSPATH . 'wp-includes/pluggable.php');
+add_action( 'init', 'process_post' );
 
-include( plugin_dir_path( __FILE__ ) . 'rtbs_recovery/rtbs_recovery.php');
+function process_post() {
+    
+    if(!get_option('rtbs_is_updated_yn')){
+    
+        global $post;
+        $args = array(
+            'post_type' => 'rtbs_tabs',
+        );
+    
+        $get_old = get_posts( $args );
+        foreach ( $get_old as $post ) : setup_postdata( $post );
+    
+            $current_id = get_the_id();
+            $old_data_tabs = get_post_meta( $current_id, 'rtbs_tabs_head', false );
+    
+            $i = 0;
+            foreach ($old_data_tabs as $key => $odata) {
+                $num = count($key);
+                $num = $num +1;
+    
+                $test_man[$key]['_rtbs_title'] = $odata['rtbs_title'];
+                $test_man[$key]['_rtbs_content'] = $odata['rtbs_content'];
+    
+                update_post_meta($current_id, '_rtbs_tabs_head', $test_man);
+    
+            }
+    
+            $old_data_settings = get_post_meta( $current_id, 'rtbs_settings_head', false );
+    
+            $i = 0;
+            foreach ($old_data_settings as $key => $odata) {
+                $num = count($key);
+                $num = $num +1;
+    
+                $var1 = $odata['rtbs_tabs_bg_color'];
+                $var2 = $odata['rtbs_breakpoint'];
+    
+                update_post_meta($current_id, '_rtbs_tabs_bg_color', $var1);
+                update_post_meta($current_id, '_rtbs_breakpoint', $var2);
+    
+            }
+    
+        endforeach;
+        
+        update_option('rtbs_is_updated_yn', 'old_data_recovered');
+            
+    }
+        
+}
+     
+
 
 /* Check for the PRO version */
 function rtbs_free_pro_check() {
