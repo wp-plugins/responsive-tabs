@@ -9,9 +9,9 @@ Author URI: http://wpdarko.com
 License: GPL2
  */
 
-add_action( 'init', 'process_post' );
+add_action( 'init', 'rtbs_old_data' );
 
-function process_post() {
+function rtbs_old_data() {
     
     if(!get_option('rtbs_is_updated_yn')){
     
