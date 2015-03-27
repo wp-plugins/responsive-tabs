@@ -13,11 +13,12 @@ add_action( 'init', 'rtbs_old_data' );
 
 function rtbs_old_data() {
     
-    if(!get_option('rtbs_is_updated_yn')){
+    if(!get_option('rtbs_is_updated_yn8')){
     
         global $post;
         $args = array(
             'post_type' => 'rtbs_tabs',
+            'posts_per_page'   => 9999,
         );
     
         $get_old = get_posts( $args );
@@ -55,7 +56,7 @@ function rtbs_old_data() {
     
         endforeach;
         
-        update_option('rtbs_is_updated_yn', 'old_data_recovered');
+        update_option('rtbs_is_updated_yn8', 'old_data_recovered');
             
     }
         
