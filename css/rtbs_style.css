@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .rtbs .rtbs_menu ul {list-style:none; padding:0; margin:0;}
-.rtbs .rtbs_menu li {display:inline-block; padding:0; margin-left:0;}
+.rtbs .rtbs_menu li {display:inline-block; padding:0; margin-left:0; margin-bottom:0px;}
 
 .rtbs .rtbs_menu li a {display:inline-block; color:#333; text-decoration: none; padding: 0.7rem 30px;}
 .rtbs .rtbs_menu li a.active {position:relative; color:white;}
