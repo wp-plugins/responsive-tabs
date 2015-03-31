@@ -192,6 +192,7 @@ function rtbs_register_tab_group_metabox( ) {
                     'rows' => 8,
                 ),
                 'row_classes' => 'de_first de_seventy de_textarea de_input',
+                'sanitization_cb' => false,
             ));
             
             $main_group->add_group_field( $rtbs_tab_group, array(
