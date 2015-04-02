@@ -1,4 +1,5 @@
 === Responsive Tabs ===
+Contributors: spwebguy
 Tags: tab, tabs, accordion, shortcode, easy, flexible, content, responsive, responsive tab, tabbed content, flexible, simple
 Requires at least: 3.6
 Tested up to: 4.1.1
