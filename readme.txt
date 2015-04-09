@@ -17,9 +17,11 @@ The free version of the Responsive Tabs plugin is **not limited** and does not c
 
 The [PRO version](http://wpdarko.com/items/responsive-tabs-pro/) gives you access to new features such as new styling settings and **icons** (from font-awesome).
 
-= Available fields/options =
+= Available fields =
 * Title
 * Content (text/images/anything)
+
+= Available settings =
 * Breakpoint (you decide when the tabs should shrink into a drop-down)
 * Color 
 
