@@ -22,7 +22,7 @@ The [PRO version](http://wpdarko.com/items/responsive-tabs-pro/) gives you acces
 * Content (text/images/anything)
 
 = Available settings =
-* Breakpoint (you decide when the tabs should shrink into a drop-down)
+* Breakpoint (decide when the tabs should shrink into an accordion)
 * Color 
 
 = Usage =
