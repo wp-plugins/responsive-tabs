@@ -1,6 +1,6 @@
 === Responsive Tabs ===
 Contributors: spwebguy
-Tags: tab, tabs, accordion, shortcode, content, responsive, responsive tab, tabbed content
+Tags: tab, tabs, accordion, shortcode, content, responsive, responsive tab
 Requires at least: 3.6
 Tested up to: 4.1.1
 Stable tag: trunk
