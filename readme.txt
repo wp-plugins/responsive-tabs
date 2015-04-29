@@ -2,7 +2,7 @@
 Contributors: spwebguy
 Tags: tab, tabs, accordion, shortcode, content, responsive, responsive tab
 Requires at least: 3.6
-Tested up to: 4.2
+Tested up to: 4.2.1
 Stable tag: trunk
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl.html
