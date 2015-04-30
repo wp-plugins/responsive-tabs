@@ -436,7 +436,7 @@ function rtbs_sc($atts) {
     </div>
     ';
 
-  endforeach;  
+  endforeach; wp_reset_query(); 
   return $output;
 
 }
