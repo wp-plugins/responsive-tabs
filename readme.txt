@@ -26,10 +26,10 @@ The [PRO version](http://wpdarko.com/items/responsive-tabs-pro/) gives you acces
 * Color 
 
 = Usage =
-Go to [the plugin's documentation](http://wpdarko.com/support/documentation/get-started-responsive-tabs/) if you need more information on how to use this plugin.
+Go to [the plugin's documentation](https://wpdarko.zendesk.com/hc/en-us/articles/206303537-Get-started-with-the-Responsive-Tabs-plugin) if you need more information on how to use this plugin.
 
 = Support =
-Find help in [our forums](http://wpdarko.com/support/forum/plugins/responsive-tabs/) for this plugin (we’ll answer you fast, promise).
+Find help in [our forums](http://wpdarko.com/support/) for this plugin (we’ll answer you fast, promise).
 
 == Installation ==
 
@@ -40,7 +40,7 @@ Find help in [our forums](http://wpdarko.com/support/forum/plugins/responsive-ta
 4. Activate the plugin
 
 = Usage =
-Go to [the plugin's documentation](http://wpdarko.com/support/documentation/get-started-responsive-tabs/) for information on how to use it.
+Go to [the plugin's documentation](https://wpdarko.zendesk.com/hc/en-us/articles/206303537-Get-started-with-the-Responsive-Tabs-plugin) for information on how to use it.
 
 == Frequently Asked Questions ==
 = No limitation for the Free version =
@@ -49,10 +49,10 @@ The free version of the Responsive Tabs plugin is **not limited** and does not c
 The [PRO version](http://wpdarko.com/items/responsive-tabs-pro/) gives you access to new features such as new styling settings and **icons** (from font-awesome).
 
 = Usage =
-Go to [the plugin's documentation](http://wpdarko.com/support/documentation/get-started-responsive-tabs/) if you need more information on how to use this plugin.
+Go to [the plugin's documentation](https://wpdarko.zendesk.com/hc/en-us/articles/206303537-Get-started-with-the-Responsive-Tabs-plugin) if you need more information on how to use this plugin.
 
 = Support =
-Find help in [our forums](http://wpdarko.com/support/forum/plugins/responsive-tabs/) for this plugin (we’ll answer you fast, promise).
+Find help in [our forums](http://wpdarko.com/support/) for this plugin (we’ll answer you fast, promise).
 
 == Screenshots ==
 1. Displaying the tabs (front view)
