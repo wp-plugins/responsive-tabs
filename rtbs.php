@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: Responsive Tabs
-Plugin URI: http://wpdarko.com/items/responsive-tabs-pro/
-Description: A responsive, simple and clean way to display your content. Create new tabs in no-time (custom type) and copy-paste the shortcode into any post/page. Find support and information on the <a href="http://wpdarko.com/responsive-tabs/">plugin's page</a>. This free version is NOT limited and does not contain any ad. Check out the <a href='http://wpdarko.com/items/responsive-tabs-pro/'>PRO version</a> for more great features.
+Plugin URI: http://wpdarko.com/responsive-tabs/
+Description: A responsive, simple and clean way to display your content. Create new tabs in no-time (custom type) and copy-paste the shortcode into any post/page. Find help and information on our <a href="http://wpdarko.com/support/">support site</a>. This free version is NOT limited and does not contain any ad. Check out the <a href='http://wpdarko.com/responsive-tabs/'>PRO version</a> for more great features.
 Version: 3.0.2
 Author: WP Darko
 Author URI: http://wpdarko.com
@@ -296,7 +296,7 @@ function rtbs_register_tab_group_metabox( ) {
     
         $help_group->add_field( array(
             'name' => '',
-                'desc' => 'Find help at WPdarko.com<br/><br/><a target="_blank" href="http://wpdarko.com/support/"><span class="dashicons dashicons-arrow-right-alt2"></span> Support & documentation</a>',
+                'desc' => 'Find help at WPdarko.com<br/><br/><a target="_blank" href="http://wpdarko.com/support/"><span class="dashicons dashicons-arrow-right-alt2"></span> Support forum</a><br/><a target="_blank" href="https://wpdarko.zendesk.com/hc/en-us/articles/206303537-Get-started-with-the-Responsive-Tabs-plugin"><span class="dashicons dashicons-arrow-right-alt2"></span> Documentation</a>',
                 'id'   => $prefix . 'help_desc',
                 'type' => 'title',
                 'row_classes' => 'de_hundred de_info de_info_side',
