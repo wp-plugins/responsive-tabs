@@ -2,7 +2,7 @@
 Contributors: spwebguy
 Tags: tab, tabs, accordion, shortcode, content, responsive, responsive tab
 Requires at least: 3.6
-Tested up to: 4.2.3
+Tested up to: 4.3
 Stable tag: trunk
 License: GPL2
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -16,6 +16,11 @@ This plugin adds a “Tabs” section to the admin panel which allows you to cre
 The free version of the Responsive Tabs plugin is **not limited** and does not contain any ad.    
 
 The [PRO version](http://wpdarko.com/items/responsive-tabs-pro/) gives you access to new features such as new styling settings and **icons** (from font-awesome).
+
+= Fully translatable =
+* POT files included (/lang/)
+* French translation included
+* Spanish translation included
 
 = Available fields =
 * Title
@@ -48,6 +53,11 @@ The free version of the Responsive Tabs plugin is **not limited** and does not c
 
 The [PRO version](http://wpdarko.com/items/responsive-tabs-pro/) gives you access to new features such as new styling settings and **icons** (from font-awesome).
 
+= Fully translatable =
+* POT files included (/lang/)
+* French translation included
+* Spanish translation included
+
 = Usage =
 Go to [the plugin's documentation](https://wpdarko.zendesk.com/hc/en-us/articles/206303537-Get-started-with-the-Responsive-Tabs-plugin) if you need more information on how to use this plugin.
 
@@ -60,13 +70,21 @@ Find help in [our forums](http://wpdarko.com/support/) for this plugin (we’ll 
 3. Creating tabs (admin view)
 4. Finding the shortcode (admin view)
 
-== Changelog ==
+== Changelog == 
+= 3.1 =
+* Plugin is now translation ready
+* Added French translation
+* Added Spanish translation
+* Fixed auto-scrolling on tab click
+* Fixed various PHP errors
+* Fixed major CSS bug (tab spacing) 
+* Cleaner edit screen
+* Security update
+
 = 3.0.2 =
-* SAFE UPDATE: from 2.0 or higher
 * Fixes the update process (from 2.0 to 3.0)
 
 = 3.0 =
-* SAFE UPDATE: from 2.0 or higher
 * New admin interface (new framework)
 * Allow forcing plugin's original fonts
 * Added docs and support forums links
@@ -74,7 +92,6 @@ Find help in [our forums](http://wpdarko.com/support/) for this plugin (we’ll 
 * Cleaning code
 
 = 2.0 =
-* WARNING: STYLING CHANGES (NO DATA LOSS) 
 * Major styling bug fixes (spacing, fonts)
 * Better adapts to your theme
 * Bigger content field when editing your tabs (UX)
@@ -82,34 +99,27 @@ Find help in [our forums](http://wpdarko.com/support/) for this plugin (we’ll 
 * Cleaning code
 
 = 1.3.1 =
-* SAFE UPDATE: from 1.0 or higher
 * Added a unique class to tab’s links for customization (user request)
 
 = 1.3 =
-* SAFE UPDATE: from 1.0 or higher
 * Added nested shortcode support
 * Styling bug fixes for many themes
 
 = 1.2.1 =
-* SAFE UPDATE: from 1.0 or higher
 * Minor bug fixes
 
 = 1.2 =
-* SAFE UPDATE: from 1.0 or higher
 * Fixed background problem when add images to the tabs
 
 = 1.1.2 =
-* SAFE UPDATE: from 1.0 or higher
 * Minor bug fixes
 * Preparing for WordPress 4.1
 
 = 1.1.1 =
-* SAFE UPDATE: from  1.0 or higher
 * Minor bug fixes
 * Prevent conflicts between plugins 
 
 = 1.1 =
-* SAFE UPDATE: from 1.0
 * Minor CSS bug fixes
 * Preventing conflicts between plugins 
 * Automatic recovery of all tabs when switching to PRO version

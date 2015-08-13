@@ -1,16 +1,43 @@
 <?php
-/*
-Plugin Name: Responsive Tabs
-Plugin URI: http://wpdarko.com/responsive-tabs/
-Description: A responsive, simple and clean way to display your content. Create new tabs in no-time (custom type) and copy-paste the shortcode into any post/page. Find help and information on our <a href="http://wpdarko.com/support/">support site</a>. This free version is NOT limited and does not contain any ad. Check out the <a href='http://wpdarko.com/responsive-tabs/'>PRO version</a> for more great features.
-Version: 3.0.2
-Author: WP Darko
-Author URI: http://wpdarko.com
-License: GPL2
+/**
+ * Plugin Name: Responsive Tabs
+ * Plugin URI: http://wpdarko.com/responsive-tabs/
+ * Description: A responsive, simple and clean way to display your content. Create new tabs in no-time (custom type) and copy-paste the shortcode into any post/page. Find help and information on our <a href="http://wpdarko.com/support/">support site</a>. This free version is NOT limited and does not contain any ad. Check out the <a href='http://wpdarko.com/responsive-tabs/'>PRO version</a> for more great features.
+ * Version: 3.1
+ * Author: WP Darko
+ * Author URI: http://wpdarko.com
+ * Text Domain: responsive-tabs
+ * Domain Path: /lang/
+ *License: GPL2
  */
 
-add_action( 'init', 'rtbs_old_data' );
 
+// Loading text domain
+add_action( 'plugins_loaded', 'rtbs_load_plugin_textdomain' );
+function rtbs_load_plugin_textdomain() {
+  load_plugin_textdomain( 'responsive-tabs', FALSE, basename( dirname( __FILE__ ) ) . '/lang/' );
+}
+
+
+/* Check for the PRO version */
+add_action( 'admin_init', 'rtbs_free_pro_check' );
+function rtbs_free_pro_check() {
+    if (is_plugin_active('responsive-tabs-pro/rtbs_pro.php')) {
+        
+        function my_admin_notice(){
+        echo '<div class="updated">
+                <p><strong>PRO</strong> version is activated.</p>
+              </div>';
+        }
+        add_action('admin_notices', 'my_admin_notice');
+        
+        deactivate_plugins(__FILE__);
+    }
+}
+
+
+/* Recover old data if there is */
+add_action( 'init', 'rtbs_old_data' );
 function rtbs_old_data() {
     
     if(!get_option('rtbs_is_updated_yn8')){
@@ -61,311 +88,121 @@ function rtbs_old_data() {
     }
         
 }
-     
+    
+
+/* Enqueue scripts & styles */
+add_action( 'wp_enqueue_scripts', 'add_rtbs_scripts', 99 );
+function add_rtbs_scripts() {
+	wp_enqueue_style( 'rtbs', plugins_url('css/rtbs_style.css', __FILE__));
+    wp_enqueue_script( 'rtbs', plugins_url('js/rtbs.js', __FILE__), array( 'jquery' ));
+}
 
 
-/* Check for the PRO version */
-function rtbs_free_pro_check() {
-    if (is_plugin_active('responsive-tabs-pro/rtbs_pro.php')) {
-        
-        function my_admin_notice(){
-        echo '<div class="updated">
-                <p><strong>PRO</strong> version is activated.</p>
-              </div>';
-        }
-        add_action('admin_notices', 'my_admin_notice');
-        
-        deactivate_plugins(__FILE__);
+/* Enqueue admin scripts & styles */
+add_action( 'admin_enqueue_scripts', 'add_admin_rtbs_style' );
+function add_admin_rtbs_style($hook) {
+    global $post_type;
+    if( 'rtbs_tabs' == $post_type ) {
+        wp_enqueue_style( 'rtbs', plugins_url('css/admin_de_style.min.css', __FILE__));
     }
 }
 
 
-add_action( 'admin_init', 'rtbs_free_pro_check' );
+// Register Tabs post type
+add_action( 'init', 'register_rtbs_type' );
+function register_rtbs_type() {
+	$labels = array(
+		'name'               => __( 'Tab sets', 'responsive-tabs' ),
+		'singular_name'      => __( 'Tab set', 'responsive-tabs' ),
+		'menu_name'          => __( 'Tab sets', 'responsive-tabs' ),
+		'name_admin_bar'     => __( 'Tab set', 'responsive-tabs' ),
+		'add_new'            => __( 'Add New', 'responsive-tabs' ),
+		'add_new_item'       => __( 'Add New Tab set', 'responsive-tabs' ),
+		'new_item'           => __( 'New Tab set', 'responsive-tabs' ),
+		'edit_item'          => __( 'Edit Tab set', 'responsive-tabs' ),
+		'view_item'          => __( 'View Tab set', 'responsive-tabs' ),
+		'all_items'          => __( 'All Tab sets', 'responsive-tabs' ),
+		'search_items'       => __( 'Search Tab sets', 'responsive-tabs' ),
+		'not_found'          => __( 'No Tab sets found.', 'responsive-tabs' ),
+		'not_found_in_trash' => __( 'No Tab sets found in Trash.', 'responsive-tabs' )
+	);
 
-/* Enqueue scripts & styles */
-function add_rtbs_scripts() {
-	wp_enqueue_style( 'rtbs', plugins_url('css/rtbs_style.min.css', __FILE__));
-    wp_enqueue_script( 'rtbs', plugins_url('js/rtbs.min.js', __FILE__), array( 'jquery' ));
+	$args = array(
+		'labels'             => $labels,
+		'public'             => false,
+		'publicly_queryable' => false,
+		'show_ui'            => true,
+        'show_in_admin_bar'  => false,
+		'capability_type'    => 'post',
+		'has_archive'        => false,
+		'hierarchical'       => false,
+		'supports'           => array( 'title' ),
+        'menu_icon'          => 'dashicons-plus'
+	);
+	register_post_type( 'rtbs_tabs', $args );  
 }
 
-add_action( 'wp_enqueue_scripts', 'add_rtbs_scripts', 99 );
 
-/* Enqueue admin styles */
-add_action( 'admin_enqueue_scripts', 'add_admin_rtbs_style' );
+// Customize update messages
+add_filter( 'post_updated_messages', 'rtbs_updated_messages' );
+function rtbs_updated_messages( $messages ) {
+	$post             = get_post();
+	$post_type        = get_post_type( $post );
+	$post_type_object = get_post_type_object( $post_type );
+	$messages['rtbs_tabs'] = array(
+		1  => __( 'Tab set updated.', 'responsive-tabs' ),
+		4  => __( 'Tab set updated.', 'responsive-tabs' ),
+		6  => __( 'Tab set published.', 'responsive-tabs' ),
+		7  => __( 'Tab set saved.', 'responsive-tabs' ),
+		10 => __( 'Tab set draft updated.', 'responsive-tabs' )
+	);
 
-function add_admin_rtbs_style() {
-	wp_enqueue_style( 'rtbs', plugins_url('css/admin_de_style.min.css', __FILE__));
+	if ( $post_type_object->publicly_queryable ) {
+		$permalink = get_permalink( $post->ID );
+
+		$view_link = sprintf( '', '', '' );
+		$messages[ $post_type ][1] .= $view_link;
+		$messages[ $post_type ][6] .= $view_link;
+		$messages[ $post_type ][9] .= $view_link;
+
+		$preview_permalink = add_query_arg( 'preview', 'true', $permalink );
+		$preview_link = sprintf( '', '', '' );
+		$messages[ $post_type ][8]  .= $preview_link;
+		$messages[ $post_type ][10] .= $preview_link;
+	}
+	return $messages;
 }
 
-// Create Tabs custom type
-function create_rtbs_tabs_type() {
-  register_post_type( 'rtbs_tabs',
-    array(
-      'labels' => array(
-        'name' => 'Tab Sets',
-        'singular_name' => 'Tab Set'
-      ),
-      'public' => true,
-      'has_archive' => false,
-      'hierarchical' => false,
-      'supports'           => array( 'title' ),
-      'menu_icon'    => 'dashicons-plus',
-    )
-  );
+
+// Add the metabox class (CMB2)
+if ( file_exists( dirname( __FILE__ ) . '/inc/cmb2/init.php' ) ) {
+    require_once dirname( __FILE__ ) . '/inc/cmb2/init.php';
+} elseif ( file_exists( dirname( __FILE__ ) . '/inc/CMB2/init.php' ) ) {
+    require_once dirname( __FILE__ ) . '/inc/CMB2/init.php';
 }
 
-add_action( 'init', 'create_rtbs_tabs_type' );
 
-/* Hide View/Preview since it's a shortcode */
-function rtbs_tabs_admin_css() {
-    global $post_type;
-    $post_types = array( 
-                        'rtbs_tabs',
-                  );
-    if(in_array($post_type, $post_types))
-    echo '<style type="text/css">#post-preview, #view-post-btn{display: none;}</style>';
-}
+// Create the metabox class (CMB2)
+add_action( 'cmb2_init', 'rtbs_register_group_metabox' );
+require_once('inc/rtbs-metaboxes.php'); 
 
-function remove_view_link_rtbs_tabs( $action ) {
-
-    unset ($action['view']);
-    return $action;
-}
-
-add_filter( 'post_row_actions', 'remove_view_link_rtbs_tabs' );
-add_action( 'admin_head-post-new.php', 'rtbs_tabs_admin_css' );
-add_action( 'admin_head-post.php', 'rtbs_tabs_admin_css' );
-
-// Adding the CMB2 Metabox class
-if ( file_exists( dirname( __FILE__ ) . '/cmb2/init.php' ) ) {
-    require_once dirname( __FILE__ ) . '/cmb2/init.php';
-} elseif ( file_exists( dirname( __FILE__ ) . '/CMB2/init.php' ) ) {
-    require_once dirname( __FILE__ ) . '/CMB2/init.php';
-}
-
-// Registering Tabs metaboxes
-function rtbs_register_tab_group_metabox( ) {
-    
-    $prefix = '_rtbs_';
-   
-    // Tables group
-    $main_group = new_cmb2_box( array(
-        'id' => $prefix . 'tab_metabox',
-        'title' => '<span class="dashicons dashicons-welcome-add-page"></span> Manage Tabs <span style="color:#8a7463; font-weight:400; float:right; padding-right:14px;"><span class="dashicons dashicons-lock"></span> Free version</span>',
-        'object_types' => array( 'rtbs_tabs' ),
-    ));
-    
-        $rtbs_tab_group = $main_group->add_field( array(
-            'id' => $prefix . 'tabs_head',
-            'type' => 'group',
-            'options' => array(
-                'group_title' => 'Tab {#}',
-                'add_button' => 'Add another tab',
-                'remove_button' => 'Remove tab',
-                'sortable' => true,
-                'single' => false,
-            ),
-        ));
-
-            $main_group->add_group_field( $rtbs_tab_group, array(
-                'name' => '<span class="dashicons dashicons-edit"></span> Title',
-                'id' => $prefix . 'title',
-                'type' => 'text',
-                'row_classes' => 'de_first de_hundred de_text de_input',
-            ));
-    
-            $main_group->add_group_field( $rtbs_tab_group, array(
-                'id' => $prefix . 'icon', 
-                'name' => '<span style="color:#8a7463;"><span style="position:relative; top:-2px;" class="dashicons dashicons-lock"></span> PRO Icon (font-awesome)</span>', 
-                'type' => 'text',
-                'row_classes' => 'de_first de_hundred de_text de_input',
-                'attributes'  => array(
-                    'placeholder' => 'This feature allows you to choose from many icons for your tabs',
-                ),
-            ));
-    
-            $main_group->add_group_field( $rtbs_tab_group, array(
-                'name' => '<span class="dashicons dashicons-edit"></span> Content',
-				'id' => $prefix . 'content',
-				'type' => 'textarea',
-                'attributes'  => array(
-                    'rows' => 8,
-                ),
-                'row_classes' => 'de_first de_seventy de_textarea de_input',
-                'sanitization_cb' => false,
-            ));
-            
-            $main_group->add_group_field( $rtbs_tab_group, array(
-                'name' => 'Tips & Tricks',
-                'desc' => '<span class="dashicons dashicons-yes"></span> Shortcodes (not recommended)<br/><span style="color:#bbb;">[your_shorcode]</span><br/><br/><span class="dashicons dashicons-yes"></span> Titles (H tags)<br/><span style="color:#bbb;">&lt;h1&gt;&lt;h2&gt;&lt;h3&gt;&lt;h4&gt;...</span></span><br/><br/><span class="dashicons dashicons-yes"></span> HTML allowed<br/><span style="color:#bbb;">&lt;img&gt;&lt;a&gt;&lt;br\&gt;&lt;p&gt;...</span></span>',
-                'id'   => $prefix . 'content_desc',
-                'type' => 'title',
-                'row_classes' => 'de_thirty de_info',
-            ));
-    
-            $main_group->add_group_field( $rtbs_tab_group, array(
-                'name' => '',
-                'id'   => $prefix . 'sep_header',
-                'type' => 'title',
-            ));
-    
-    // Settings group
-    $side_group = new_cmb2_box( array(
-        'id' => $prefix . 'settings_head',
-        'title' => '<span class="dashicons dashicons-admin-tools"></span> Tab Set Settings',
-        'object_types' => array( 'rtbs_tabs' ),
-        'context' => 'side',
-        'priority' => 'high',
-        'closed' => true,
-    ));
-        
-        $side_group->add_field( array(
-            'name' => 'General settings',
-            'id'   => $prefix . 'other_settings_desc',
-            'type' => 'title',
-            'row_classes' => 'de_hundred_side de_heading_side',
-        ));
-    
-        $side_group->add_field( array(
-            'id' => $prefix . 'tabs_bg_color', 
-            'name' => '<span class="dashicons dashicons-admin-appearance"></span> Main color', 
-            'type' => 'colorpicker', 
-            'default' => '#57c9e0',
-            'row_classes' => 'de_hundred_side de_color_side',
-        ));
-    
-        $side_group->add_field( array(
-            'id' => $prefix . 'breakpoint', 
-            'name' => '<span class="dashicons dashicons-admin-generic"></span> Breakpoint', 
-            'type' => 'text', 
-            'desc' => 'Width of the tab container at which it will turn into an accordion (in pixels, but don\'t put the "px" at the end).', 
-            'default' => '600',
-            'row_classes' => 'de_hundred_side de_text_side de_input',
-        ));
-    
-        $side_group->add_field( array(
-            'name' => '<span class="dashicons dashicons-admin-generic"></span> Force original fonts',
-            'desc' => 'By default this plugin will use your theme\'s font, check this to force the use of the plugin\'s original fonts.',
-		    'id'   => $prefix . 'original_font',
-		    'type' => 'checkbox',
-            'row_classes' => 'de_hundred_side de_checkbox_side',
-            'default' => false,
-        ));
-    
-        $side_group->add_field( array(
-            'id'      => $prefix . 'border', 
-            'name'    => '<span style="color:#8a7463;"><span class="dashicons dashicons-lock"></span> PRO Container borders</span>', 
-            'type'    => 'select',
-            'options' => array(
-                'rtbs_notround' => 'Round or squared',
-            ),
-            'row_classes' => 'de_hundred_side de_text_side de_input',
-        ));
-    
-        $side_group->add_field( array(
-            'id'      => $prefix . 'cbg', 
-            'name'    => '<span style="color:#8a7463;"><span class="dashicons dashicons-lock"></span> PRO Container background </span>', 
-            'type'    => 'select',
-            'options' => array(
-                'whitesmoke' => 'Choose among different shades',
-            ),
-            'row_classes' => 'de_hundred_side de_text_side de_input',
-        ));
-    
-        $side_group->add_field( array(
-            'id'      => $prefix . 'arrows', 
-            'name'    => '<span style="color:#8a7463;"><span class="dashicons dashicons-lock"></span> PRO Button style </span>', 
-            'type'    => 'select',
-            'options' => array(
-                'whitesmoke' => 'Add a small arrow to your tabs',
-            ),
-            'default' => 'rtbs_notarrows',
-            'row_classes' => 'de_hundred_side de_text_side de_input',
-        ));
-    
-    // Help group
-    $help_group = new_cmb2_box( array(
-        'id' => $prefix . 'help_metabox',
-        'title' => '<span class="dashicons dashicons-sos"></span> Help & Support',
-        'object_types' => array( 'rtbs_tabs' ),
-        'context' => 'side',
-        'priority' => 'high',
-        'closed' => true,
-        'row_classes' => 'de_hundred de_heading',
-    ));
-    
-        $help_group->add_field( array(
-            'name' => '',
-                'desc' => 'Find help at WPdarko.com<br/><br/><a target="_blank" href="http://wpdarko.com/support/"><span class="dashicons dashicons-arrow-right-alt2"></span> Support forum</a><br/><a target="_blank" href="https://wpdarko.zendesk.com/hc/en-us/articles/206303537-Get-started-with-the-Responsive-Tabs-plugin"><span class="dashicons dashicons-arrow-right-alt2"></span> Documentation</a>',
-                'id'   => $prefix . 'help_desc',
-                'type' => 'title',
-                'row_classes' => 'de_hundred de_info de_info_side',
-        ));
-    
-    // PRO group
-    $pro_group = new_cmb2_box( array(
-        'id' => $prefix . 'pro_metabox',
-        'title' => '<span class="dashicons dashicons-awards"></span> PRO version',
-        'object_types' => array( 'rtbs_tabs' ),
-        'context' => 'side',
-        'priority' => 'high',
-        'closed' => true,
-        'row_classes' => 'de_hundred de_heading',
-    ));
-    
-        $pro_group->add_field( array(
-            'name' => '',
-                'desc' => 'This free version is <strong>not</strong> limited and does <strong>not</strong> contain any ad. Check out the PRO version for more great features.<br/><br/><a target="_blank" href="http://wpdarko.com/responsive-tabs"><span class="dashicons dashicons-arrow-right-alt2"></span> See plugin\'s page</a><br/><br/><span style="font-size:13px; color:#88acbc;">Coupon code <strong>7832922</strong> (10% OFF).</span>',
-                'id'   => $prefix . 'pro_desc',
-                'type' => 'title',
-                'row_classes' => 'de_hundred de_info de_info_side',
-        ));
-    
-    // Shortcode group
-    $show_group = new_cmb2_box( array(
-        'id' => $prefix . 'shortcode_metabox',
-        'title' => '<span class="dashicons dashicons-visibility"></span> Display my Tabs',
-        'object_types' => array( 'rtbs_tabs' ),
-        'context' => 'side',
-        'priority' => 'low',
-        'closed' => false,
-        'row_classes' => 'de_hundred de_heading',
-    ));
-    
-        $show_group->add_field( array(
-            'name' => '',
-            'desc' => 'To display your Tabs on your site, copy-paste the Tab Set\'s [Shortcode] in your post/page. <br/><br/>You can find this shortcode by clicking on the "Tab Sets" tab in the menu on the left.',
-            'id'   => $prefix . 'short_desc',
-            'type' => 'title',
-            'row_classes' => 'de_hundred de_info de_info_side',
-        ));
-    
-}
-
-add_action( 'cmb2_init', 'rtbs_register_tab_group_metabox' );
 
 // Add shortcode column
+add_action( 'manage_rtbs_tabs_posts_custom_column' , 'dkrtbs_custom_columns', 10, 2 );
+add_filter('manage_rtbs_tabs_posts_columns' , 'add_rtbs_tabs_columns');
 function dkrtbs_custom_columns( $column, $post_id ) {
     switch ( $column ) {
 	case 'shortcode' :
 		global $post;
 		$slug = '' ;
 		$slug = $post->post_name;  
-        $shortcode = '<span style="border: solid 3px lightgray; background:white; padding:2px 7px 5px; font-size:18px; line-height:40px;">[rtbs name="'.$slug.'"]</strong>';
+        $shortcode = '<span style="display:inline-block;border:solid 2px lightgray; background:white; padding:0 8px; font-size:13px; line-height:25px; vertical-align:middle;">[rtbs name="'.$slug.'"]</span>';
 	    echo $shortcode; 
 	    break;
     }
 }
+function add_rtbs_tabs_columns($columns) { return array_merge($columns, array('shortcode' => 'Shortcode')); }
 
-add_action( 'manage_rtbs_tabs_posts_custom_column' , 'dkrtbs_custom_columns', 10, 2 );
-
-function add_rtbs_tabs_columns($columns) {
-    return array_merge($columns, 
-              array('shortcode' => __('Shortcode'),
-                    ));
-}
-
-add_filter('manage_rtbs_tabs_posts_columns' , 'add_rtbs_tabs_columns');
 
 // Create the Responsive Tabs shortcode
 function rtbs_sc($atts) {
@@ -392,6 +229,8 @@ function rtbs_sc($atts) {
     $rtbs_breakpoint = get_post_meta( $post->ID, '_rtbs_breakpoint', true );
     $rtbs_color = get_post_meta( $post->ID, '_rtbs_tabs_bg_color', true );
 
+    $output = '';
+    
     /* Outputing the options in invisible divs */
     $output = '<div class="rtbs '.$ori_f.' rtbs_'.$name.'">';
     $output .= '<div class="rtbs_slug" style="display:none">'.$name.'</div>';
@@ -405,14 +244,21 @@ function rtbs_sc($atts) {
                 foreach ($entries as $key => $tabs) {
                     if ($key == 0){
                     $output .= '<li class="current">';
-                    $output .= '<a style="background:'.$rtbs_color.'" class="active '.$name.'-tab-link-'.$key.'" href="#'.$name.'-tab-'.$key.'">';
-                    $output .= $tabs['_rtbs_title'];
+                    $output .= '<a style="background:'.$rtbs_color.'" class="active '.$name.'-tab-link-'.$key.'" href="#" data-tab="#'.$name.'-tab-'.$key.'">';
+                    
+                    (!empty($tabs['_rtbs_title'])) ? 
+                            $output .= $tabs['_rtbs_title'] : 
+                                $output .= '&nbsp;';
+                        
                     $output .= '</a>';
                     $output .= '</li>';
                     } else {
                     $output .= '<li>';
-                    $output .= '<a href="#'.$name.'-tab-'.$key.'" class="'.$name.'-tab-link-'.$key.'">';
-                    $output .= $tabs['_rtbs_title'];
+                    $output .= '<a href="#" data-tab="#'.$name.'-tab-'.$key.'" class="'.$name.'-tab-link-'.$key.'">';
+                    (!empty($tabs['_rtbs_title'])) ? 
+                            $output .= $tabs['_rtbs_title'] : 
+                                $output .= '&nbsp;';
+                        
                     $output .= '</a>';
                     $output .= '</li>';
                     }
@@ -436,7 +282,7 @@ function rtbs_sc($atts) {
     </div>
     ';
 
-  endforeach; wp_reset_query(); 
+  endforeach; wp_reset_postdata(); 
   return $output;
 
 }
