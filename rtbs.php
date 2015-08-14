@@ -3,7 +3,7 @@
  * Plugin Name: Responsive Tabs
  * Plugin URI: http://wpdarko.com/responsive-tabs/
  * Description: A responsive, simple and clean way to display your content. Create new tabs in no-time (custom type) and copy-paste the shortcode into any post/page. Find help and information on our <a href="http://wpdarko.com/support/">support site</a>. This free version is NOT limited and does not contain any ad. Check out the <a href='http://wpdarko.com/responsive-tabs/'>PRO version</a> for more great features.
- * Version: 3.1
+ * Version: 3.1.1
  * Author: WP Darko
  * Author URI: http://wpdarko.com
  * Text Domain: responsive-tabs

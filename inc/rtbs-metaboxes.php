@@ -6,7 +6,14 @@ function rtbs_register_group_metabox( ) {
     
     /* Custom sanitization call-back to allow HTML in most fields */
     function rtbs_html_allowed_sani_cb($content) {
-        return is_array( $content ) ? array_map( 'wp_kses_post', $content ) : wp_kses_post( $content );
+        return wp_kses_post( $content );
+    }
+    
+    /* Custom sanitization call-back to allow HTML (and iframes) in content field */
+    function rtbs_iframe_allowed_sani_cb($content) {
+        // Get wp_kses_post array of allowed tags (+ iframes since WordPress filters it out by default)
+        require('rtbs-iframe-allowed.php');
+        return wp_kses ( $content, $rtbs_iframe_array );
     }
     
     $prefix = '_rtbs_';
@@ -50,7 +57,7 @@ function rtbs_register_group_metabox( ) {
 				'type' => 'textarea',
                 'attributes'  => array('rows' => 6),
                 'row_classes' => 'de_first de_hundred de_textarea de_input',
-                'sanitization_cb' => 'rtbs_html_allowed_sani_cb',
+                'sanitization_cb' => 'rtbs_iframe_allowed_sani_cb',
             ));
 
     

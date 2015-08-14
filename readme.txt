@@ -70,7 +70,10 @@ Find help in [our forums](http://wpdarko.com/support/) for this plugin (we’ll 
 3. Creating tabs (admin view)
 4. Finding the shortcode (admin view)
 
-== Changelog == 
+== Changelog ==
+= 3.1.1 =
+* Allowed iframe in tab content
+ 
 = 3.1 =
 * Plugin is now translation ready
 * Added French translation
