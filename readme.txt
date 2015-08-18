@@ -13,9 +13,9 @@ A responsive and clean way to display your content. Create new tabs in no-time (
 This plugin adds a “Tabs” section to the admin panel which allows you to create tabbed content for your website the easy way. You can quickly add your content to your different tabs, choose a color, a breakpoint, re-order them at anytime and display them anywhere with a simple shortcode. What you see is what you get, and it’s totally free.
 
 = No limitation for the Free version =
-The free version of the Responsive Tabs plugin is **not limited** and does not contain any ad.    
+The free version of the Responsive Tabs plugin is **not limited**.    
 
-The [PRO version](http://wpdarko.com/items/responsive-tabs-pro/) gives you access to new features such as new styling settings and **icons** (from font-awesome).
+The [PRO version](http://wpdarko.com/items/responsive-tabs-pro/) adds new features such as new styling settings and **icons** (from font-awesome).
 
 = Fully translatable =
 * POT files included (/lang/)
@@ -49,9 +49,9 @@ Go to [the plugin's documentation](https://wpdarko.zendesk.com/hc/en-us/articles
 
 == Frequently Asked Questions ==
 = No limitation for the Free version =
-The free version of the Responsive Tabs plugin is **not limited** and does not contain any ad.    
+The free version of the Responsive Tabs plugin is **not limited**.    
 
-The [PRO version](http://wpdarko.com/items/responsive-tabs-pro/) gives you access to new features such as new styling settings and **icons** (from font-awesome).
+The [PRO version](http://wpdarko.com/items/responsive-tabs-pro/) adds new features such as new styling settings and **icons** (from font-awesome).
 
 = Fully translatable =
 * POT files included (/lang/)
