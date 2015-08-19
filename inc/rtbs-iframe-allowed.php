@@ -404,7 +404,7 @@ $rtbs_iframe_array = array(
             'width' => true,
     	    'style' => true,
 	        'class' => true,
-	        'id' => true,v
+	        'id' => true,
     ),
     'thead' => array(
             'align' => true,
